@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title> HCL Intellibot!</title>
+    <!-- Fonts similar to ChatGPT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='HCL-logo.png') }}" alt="HCL Tech Logo" class="logo">
+        <h1>Chat with HCL IntelliBot!</h1>
+
+        <form method="POST" class="instruction-form">
+            <div class="nda-box">
+                <p>⚠️ <strong>Important Instructions:</strong></p>
+                <ul>
+    <li>This bot is intended for <strong>company-related queries only</strong>.</li>
+    <li>Please do not share any <strong>personal, confidential, or sensitive information</strong>.</li>
+    <li>Responses are <strong>AI-generated</strong> and may sometimes be inaccurate or incomplete.</li>
+    <li>Avoid submitting <strong>offensive, inappropriate, or discriminatory content</strong>.</li>
+    <li>By using this bot, you agree to <strong>comply with company policies</strong>.</li>
+</ul>
+
+                <label>
+                    <input type="checkbox" name="agree" required /> I understand and agree.
+                </label>
+            </div>
+            <input type="submit" value="Proceed to Chat" class="submit-btn">
+        </form>
+    </div>
+</body>
+</html>

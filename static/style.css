@@ -1,0 +1,213 @@
+/* Reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #27272a; /* ChatGPT dark background */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    background: linear-gradient(135deg, #181717, #2e2e2e); /* black to grey gradient */
+    border-radius: 12px;
+    padding: 40px 50px;
+    max-width: 650px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Logo */
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+/* Header */
+h1 {
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+/* NDA box */
+.nda-box {
+    background-color: #3b3c46;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    width: 100%;
+    border: 1px solid #555;
+}
+
+.nda-box ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.nda-box input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+/* Form */
+.instruction-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    padding: 14px 20px;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    background-color: #10a37f;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0e8b6f;
+}
+
+/* Chat boxes - can reuse for chat.html later */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.message {
+    padding: 15px 20px;
+    border-radius: 12px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #10a37f;
+    color: #fff;
+}
+
+.message.bot {
+    align-self: flex-start;
+    background-color: #3b3c46;
+    color: #fff;
+}
+
+/* Input for chat */
+.chat-input {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.chat-input input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: none;
+    background-color: #2a2b32;
+    color: #fff;
+}
+
+.chat-input input[type="text"]:focus {
+    outline: none;
+    border: 1px solid #10a37f;
+}
+
+.chat-input button {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    background-color: #10a37f;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.chat-input button:hover {
+    background-color: #0e8b6f;
+}
+
+/* Scrollbar styling for chat */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+.latest-news {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.latest-news h2 {
+    color: #00e0ff;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.news-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.news-card {
+    background-color: #2c3e50;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 220px;
+    flex: 0 0 auto;
+    box-shadow: 0 4px 10px rgba(0,224,255,0.2);
+}
+
+.news-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.news-card p {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.news-card a {
+    font-size: 13px;
+    color: #00e0ff;
+    text-decoration: none;
+}
+
+.news-card a:hover {
+    text-decoration: underline;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: #10a37f;
+    border-radius: 3px;
+}

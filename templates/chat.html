@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HCL IntelliBot Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='chat_style.css') }}">
+<style>
+
+</style>
+</head>
+<body>
+<div class="chat-container-wrapper">
+    <header>
+        <img src="{{ url_for('static', filename='HCL-logo.png') }}" alt="HCL Logo" class="logo">
+        <h1></h1>
+    </header>
+
+    <div id="chatBox" class="chat-box">
+        {% if answer %}
+            <div class="message user">{{ query }}</div>
+            <div class="message bot">{{ answer }}</div>
+        {% else %}
+            <div class="message bot">Hey there! How can I assist you today?</div>
+        {% endif %}
+
+        <!-- Quick question buttons -->
+        <div id="quickQuestions" class="quick-questions">
+            <button class="quick-btn" data-key="HR">HR</button>
+            <button class="quick-btn" data-key="Legal">Legal</button>
+            <button class="quick-btn" data-key="IT">IT</button>
+            <button class="quick-btn" data-key="Infrastructure">Infrastructure</button>
+        </div>
+    </div>
+
+    <form method="POST" class="chat-input" id="chatForm">
+        <input type="text" name="query" id="queryInput" placeholder="Type your question..." autocomplete="off" required>
+        <button type="submit">Send</button>
+        <button type="button" class="mic-btn" id="micButton" title="Speak">🎙️</button>
+    </form>
+</div>
+
+<script>
+const queryInput = document.getElementById("queryInput");
+const chatForm = document.getElementById("chatForm");
+const chatBox = document.getElementById("chatBox");
+
+// Map quick buttons to queries (adjust to match your documents!)
+const quickMap = {
+    "HR": "Tell me about HCL's HR policies",
+    "Legal": "What are HCL's legal and compliance policies",
+    "IT": "How do I contact IT support",
+    "Infrastructure": "Infrastructure Services"
+};
+
+
+// Button click handler
+document.querySelectorAll(".quick-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-key");
+        const query = quickMap[key];
+        if (query) {
+            queryInput.value = query;
+            chatForm.submit();
+        }
+    });
+});
+
+// Scroll chat to bottom
+function scrollChatToBottom() {
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Auto-scroll after page load if there’s an answer
+window.onload = scrollChatToBottom;
+
+// Speech recognition
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+    const micButton = document.getElementById('micButton');
+
+    micButton.addEventListener('click', () => { recognition.start(); });
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        queryInput.value = transcript;
+        queryInput.focus();
+    };
+
+    recognition.onerror = (event) => {
+        console.error("Speech recognition error", event.error);
+        alert("Speech recognition failed. Please try again.");
+    };
+}
+</script>
+</body>
+</html>

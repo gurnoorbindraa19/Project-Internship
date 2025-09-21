@@ -25,7 +25,7 @@
             <div class="message bot">Hey there! How can I assist you today?</div>
         {% endif %}
 
-        <!-- Quick question buttons -->
+        
         <div id="quickQuestions" class="quick-questions">
             <button class="quick-btn" data-key="HR">HR</button>
             <button class="quick-btn" data-key="Legal">Legal</button>
@@ -46,7 +46,7 @@ const queryInput = document.getElementById("queryInput");
 const chatForm = document.getElementById("chatForm");
 const chatBox = document.getElementById("chatBox");
 
-// Map quick buttons to queries (adjust to match your documents!)
+
 const quickMap = {
     "HR": "Tell me about HCL's HR policies",
     "Legal": "What are HCL's legal and compliance policies",
@@ -55,7 +55,7 @@ const quickMap = {
 };
 
 
-// Button click handler
+
 document.querySelectorAll(".quick-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         const key = btn.getAttribute("data-key");
@@ -67,15 +67,15 @@ document.querySelectorAll(".quick-btn").forEach(btn => {
     });
 });
 
-// Scroll chat to bottom
+
 function scrollChatToBottom() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Auto-scroll after page load if there’s an answer
+
 window.onload = scrollChatToBottom;
 
-// Speech recognition
+
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (SpeechRecognition) {
     const recognition = new SpeechRecognition();
